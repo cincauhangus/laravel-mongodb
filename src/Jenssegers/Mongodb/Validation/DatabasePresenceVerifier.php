@@ -17,7 +17,7 @@ class DatabasePresenceVerifier extends \Illuminate\Validation\DatabasePresenceVe
      */
     public function getCount($collection, $column, $value, $excludeId = null, $idColumn = null, array $extra = [])
     {
-        $query = $this->table($collection)->where($column, 'regex', "/$value/i");
+        $query = $this->table($collection)->where($column, $value);
 
         if (!is_null($excludeId) && $excludeId != 'NULL') {
             $query->where($idColumn ?: 'id', '<>', $excludeId);
